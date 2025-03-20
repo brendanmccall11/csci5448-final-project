@@ -5,8 +5,8 @@ public class PointTest {
 
     @Test
     public void testString() {
-        int xCoordinate = 10;
-        int yCoordinate = 20;
+        double xCoordinate = 10.0;
+        double yCoordinate = 20.0;
         Point point = new Point(xCoordinate, yCoordinate);
         String vertexString = "(" + xCoordinate + ", " + yCoordinate + ")";
         assertEquals(vertexString, point.toString());

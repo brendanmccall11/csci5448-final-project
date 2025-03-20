@@ -1,9 +1,9 @@
 public class Point {
 
-    private final int xValue;
-    private final int yValue;
+    private final double xValue;
+    private final double yValue;
 
-    public Point(int xValue, int yValue) {
+    public Point(double xValue, double yValue) {
         this.xValue = xValue;
         this.yValue = yValue;
     }
