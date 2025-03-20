@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Edge {
 
-    private Point startingPoint;
-    private Point endingPoint;
+    private final Point startingPoint;
+    private final Point endingPoint;
 
     public Edge(Point startingPoint, Point endingPoint) {
         this.startingPoint = startingPoint;
