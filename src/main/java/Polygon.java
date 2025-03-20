@@ -29,4 +29,19 @@ public class Polygon {
         return output.toString();
     }
 
+    public void removePoint(Point givenPoint){
+        List<Edge> connectedEdges = getConnectedEdges(givenPoint);
+
+    }
+
+    public List<Edge> getConnectedEdges(Point givenPoint) {
+        List<Edge> connectedEdges = new ArrayList<>();
+        for(Edge edge : edges){
+            if(edge.isConnectedEdge(givenPoint)){
+                connectedEdges.add(edge);
+            }
+        }
+        return connectedEdges;
+    }
+
 }

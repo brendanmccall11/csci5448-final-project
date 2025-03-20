@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Edge {
 
     private final Point startingPoint;
@@ -19,6 +21,10 @@ public class Edge {
 
     public Point getEndingPoint() {
         return endingPoint;
+    }
+
+    public Boolean isConnectedEdge(Point point){
+        return point == startingPoint || point == endingPoint;
     }
 
 }
