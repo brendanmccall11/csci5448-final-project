@@ -28,15 +28,6 @@ public class Edge {
         return point == startingPoint || point == endingPoint;
     }
 
-    public void replacePoint(Point deletedPoint, Point newPoint){
-        if(deletedPoint == startingPoint){
-            this.startingPoint = newPoint;
-        }
-        if(deletedPoint == endingPoint){
-            this.endingPoint = newPoint;
-        }
-    }
-
     public static List<Point> getConnectedPoints(List<Edge> connectedEdges){
         List<Point> connectedPoints = new ArrayList<>();
         Edge edgeA = connectedEdges.getFirst();
@@ -57,5 +48,21 @@ public class Edge {
         }
         return connectedPoints;
     }
+
+
+    public static Edge flipEdge(List<Edge> connectedEdges){
+        List<Point> connectedPoints = Edge.getConnectedPoints(connectedEdges);
+        return new Edge(connectedPoints.getFirst(), connectedPoints.getLast());
+    }
+
+//
+//    public void replacePoint(Point deletedPoint, Point newPoint){
+//        if(deletedPoint == startingPoint){
+//            this.startingPoint = newPoint;
+//        }
+//        if(deletedPoint == endingPoint){
+//            this.endingPoint = newPoint;
+//        }
+//    }
 
 }

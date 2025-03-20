@@ -31,12 +31,9 @@ public class Polygon {
 
     public void removePoint(Point deletedPoint){
         List<Edge> connectedEdges = getConnectedEdges(deletedPoint);
-        List<Point> connectedPoints = Edge.getConnectedPoints(connectedEdges);
-
-
-//        polygon.updatePointInEdges(connectedEdges);
-//        polygon.connectEdges(connectedEdges);
-
+        Edge newEdge = Edge.flipEdge(connectedEdges);
+        addNewEdge(newEdge);
+        removePreviousEdges(connectedEdges);
     }
 
     public List<Edge> getConnectedEdges(Point givenPoint) {
@@ -47,6 +44,15 @@ public class Polygon {
             }
         }
         return connectedEdges;
+    }
+
+    private void addNewEdge(Edge newEdge) {
+        edges.add(newEdge);
+    }
+
+    private void removePreviousEdges(List<Edge> connectedEdges) {
+        edges.remove(connectedEdges.getFirst());
+        edges.remove(connectedEdges.getLast());
     }
 
 }
