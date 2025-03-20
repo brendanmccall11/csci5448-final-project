@@ -29,8 +29,13 @@ public class Polygon {
         return output.toString();
     }
 
-    public void removePoint(Point givenPoint){
-        List<Edge> connectedEdges = getConnectedEdges(givenPoint);
+    public void removePoint(Point deletedPoint){
+        List<Edge> connectedEdges = getConnectedEdges(deletedPoint);
+        List<Point> connectedPoints = Edge.getConnectedPoints(connectedEdges);
+
+
+//        polygon.updatePointInEdges(connectedEdges);
+//        polygon.connectEdges(connectedEdges);
 
     }
 
