@@ -6,7 +6,7 @@ public class Polygon {
     private final List<Edge> edges;
 
     public Polygon() {
-        edges = new ArrayList<Edge>();
+        edges = new ArrayList<>();
     }
 
     public void addEdge(Edge e) {
