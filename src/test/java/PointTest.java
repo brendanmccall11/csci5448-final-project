@@ -1,15 +1,15 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class VertexTest {
+public class PointTest {
 
     @Test
     public void testString() {
         int xCoordinate = 10;
         int yCoordinate = 20;
-        Vertex vertex = new Vertex(xCoordinate, yCoordinate);
+        Point point = new Point(xCoordinate, yCoordinate);
         String vertexString = "(" + xCoordinate + ", " + yCoordinate + ")";
-        assertEquals(vertexString, vertex.toString());
+        assertEquals(vertexString, point.toString());
     }
 
 }

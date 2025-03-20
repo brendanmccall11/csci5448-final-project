@@ -1,15 +1,24 @@
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EdgeTest {
 
     @Test
     public void testString() {
-        Vertex vertexA = new Vertex(10, 20);
-        Vertex vertexB = new Vertex(30, 40);
-        Edge edge = new Edge(vertexA, vertexB);
-        String edgeString = "Edge: " + vertexA + ", " + vertexB;
+        Point pointA = new Point(10, 20);
+        Point pointB = new Point(30, 40);
+        Edge edge = new Edge(pointA, pointB);
+        String edgeString = "Edge: " + pointA + ", " + pointB;
         assertEquals(edgeString, edge.toString());
     }
+
+    @Test
+    public void testPointGetters() {
+        Point pointA = new Point(10, 20);
+        Point pointB = new Point(30, 40);
+        Edge edge = new Edge(pointA, pointB);
+        assertEquals(pointA, edge.getStartingPoint());
+        assertEquals(pointB, edge.getEndingPoint());
+    }
+
 }
