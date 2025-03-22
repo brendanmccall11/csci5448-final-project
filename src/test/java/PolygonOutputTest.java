@@ -1,10 +1,11 @@
-import java.util.Arrays;
+import org.junit.jupiter.api.Test;
+
 import java.util.List;
 
-public class JavaMain {
+public class PolygonOutputTest {
 
-    public static void main(String[] args) {
-
+    @Test
+    public void testPolygonOutput() {
         Point pointA = new Point(2.3, 3.1);
         Point pointB = new Point(4.5, 1.2);
         Point pointC = new Point(5.7, 4.8);
@@ -15,16 +16,13 @@ public class JavaMain {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
-        List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
+        List<Edge> edges = List.of(edgeAB, edgeBC, edgeCD, edgeDA);
         Polygon polygon = new Polygon(edges);
-//        polygon.addEdge(edgeAB);
-//        polygon.addEdge(edgeBC);
-//        polygon.addEdge(edgeCD);
-//        polygon.addEdge(edgeDA);
 
         PolygonOutput polygonOutput = new PolygonOutput(polygon);
         polygonOutput.draw();
 
     }
+
 
 }

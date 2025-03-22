@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,11 +36,8 @@ public class EdgeTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
-        Polygon polygon = new Polygon();
-        polygon.addEdge(edgeAB);
-        polygon.addEdge(edgeBC);
-        polygon.addEdge(edgeCD);
-        polygon.addEdge(edgeDA);
+        List<Edge> edges = List.of(edgeAB, edgeBC, edgeCD, edgeDA);
+        Polygon polygon = new Polygon(edges);
 
         List<Edge> connectedEdges = polygon.getConnectedEdges(pointB);
         List<Point> connectedPoints = Edge.getConnectedPoints(connectedEdges);

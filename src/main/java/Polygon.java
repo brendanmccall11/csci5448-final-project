@@ -4,9 +4,20 @@ import java.util.List;
 public class Polygon {
 
     private final List<Edge> edges;
+    //private final List<Point> points;
+
+    public Polygon(List<Edge> edges) {
+        this.edges = edges;
+    }
 
     public Polygon() {
-        edges = new ArrayList<>();
+        this.edges = new ArrayList<>();
+    }
+
+    private void addEdges(){
+        for(Edge edge: edges){
+            edges.add(edge);
+        }
     }
 
     public void addEdge(Edge e) {
