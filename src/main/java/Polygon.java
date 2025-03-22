@@ -10,15 +10,8 @@ public class Polygon {
         addEdges(edges);
     }
 
-    public Polygon() {
-    }
-
     private void addEdges(List<Edge> edges){
         this.edges.addAll(edges);
-    }
-
-    public void addEdge(Edge e) {
-        edges.add(e);
     }
 
     public void removeEdge(Edge e) {
