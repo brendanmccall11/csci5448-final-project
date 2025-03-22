@@ -23,6 +23,10 @@ public class Polygon {
         edges.remove(e);
     }
 
+    public List<Point> getPoints() {
+        return points;
+    }
+
     public List<Edge> getEdges(){
         return edges;
     }
