@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -40,20 +39,11 @@ public class PolygonTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
-//        List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
-//        Polygon polygon = new Polygon(edges);
-        Polygon polygon = new Polygon();
-        polygon.addEdge(edgeAB);
-        polygon.addEdge(edgeBC);
-        polygon.addEdge(edgeCD);
-        polygon.addEdge(edgeDA);
+        List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
+        Polygon polygon = new Polygon(edges);
 
         polygon.removeEdge(edgeAB);
         List<Edge> expectedOutput = List.of(edgeBC, edgeCD, edgeDA);
-
-        System.out.println(polygon);
-        System.out.println(expectedOutput);
-
         assertEquals(expectedOutput, polygon.getEdges());
     }
 
@@ -88,12 +78,8 @@ public class PolygonTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
-      //  List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon();
-        polygon.addEdge(edgeAB);
-        polygon.addEdge(edgeBC);
-        polygon.addEdge(edgeCD);
-        polygon.addEdge(edgeDA);
+        List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
+        Polygon polygon = new Polygon(edges);
         polygon.removePoint(pointB);
 
         Edge edgeAC = new Edge(pointA, pointC);

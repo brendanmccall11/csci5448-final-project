@@ -49,20 +49,9 @@ public class Edge {
         return connectedPoints;
     }
 
-
     public static Edge flipEdge(List<Edge> connectedEdges){
         List<Point> connectedPoints = Edge.getConnectedPoints(connectedEdges);
         return new Edge(connectedPoints.getFirst(), connectedPoints.getLast());
     }
-
-//
-//    public void replacePoint(Point deletedPoint, Point newPoint){
-//        if(deletedPoint == startingPoint){
-//            this.startingPoint = newPoint;
-//        }
-//        if(deletedPoint == endingPoint){
-//            this.endingPoint = newPoint;
-//        }
-//    }
 
 }
