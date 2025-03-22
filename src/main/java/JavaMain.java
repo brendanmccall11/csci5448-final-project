@@ -15,12 +15,9 @@ public class JavaMain {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
+        List<Point> points = List.of(pointA, pointB, pointC, pointD);
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon(edges);
-//        polygon.addEdge(edgeAB);
-//        polygon.addEdge(edgeBC);
-//        polygon.addEdge(edgeCD);
-//        polygon.addEdge(edgeDA);
+        Polygon polygon = new Polygon(points, edges);
 
         PolygonOutput polygonOutput = new PolygonOutput(polygon);
         polygonOutput.draw();

@@ -34,8 +34,9 @@ public class EdgeTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
+        List<Point> points = List.of(pointA, pointB, pointC, pointD);
         List<Edge> edges = List.of(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon(edges);
+        Polygon polygon = new Polygon(points, edges);
 
         List<Edge> connectedEdges = polygon.getConnectedEdges(pointB);
         List<Point> connectedPoints = Edge.getConnectedPoints(connectedEdges);

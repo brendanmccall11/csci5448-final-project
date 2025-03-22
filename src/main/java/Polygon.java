@@ -3,11 +3,16 @@ import java.util.List;
 
 public class Polygon {
 
+    private final List<Point> points = new ArrayList<>();
     private final List<Edge> edges = new ArrayList<>();
-    //private final List<Point> points;
 
-    public Polygon(List<Edge> edges) {
+    public Polygon( List<Point> points, List<Edge> edges) {
+        addPoints(points);
         addEdges(edges);
+    }
+
+    private void addPoints(List<Point> points){
+        this.points.addAll(points);
     }
 
     private void addEdges(List<Edge> edges){

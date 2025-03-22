@@ -16,8 +16,9 @@ public class PolygonOutputTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
+        List<Point> points = List.of(pointA, pointB, pointC, pointD);
         List<Edge> edges = List.of(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon(edges);
+        Polygon polygon = new Polygon(points, edges);
 
         PolygonOutput polygonOutput = new PolygonOutput(polygon);
         polygonOutput.draw();

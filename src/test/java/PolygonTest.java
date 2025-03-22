@@ -17,8 +17,9 @@ public class PolygonTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
+        List<Point> points = List.of(pointA, pointB, pointC, pointD);
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon(edges);
+        Polygon polygon = new Polygon(points, edges);
 
         StringBuilder expectedOutput = new StringBuilder("Polygon:\n");
         for (Edge edge : polygon.getEdges()) {
@@ -39,8 +40,9 @@ public class PolygonTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
+        List<Point> points = List.of(pointA, pointB, pointC, pointD);
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon(edges);
+        Polygon polygon = new Polygon(points, edges);
 
         polygon.removeEdge(edgeAB);
         List<Edge> expectedOutput = List.of(edgeBC, edgeCD, edgeDA);
@@ -59,8 +61,9 @@ public class PolygonTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
+        List<Point> points = List.of(pointA, pointB, pointC, pointD);
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon(edges);
+        Polygon polygon = new Polygon(points, edges);
 
         List<Edge> expectedOutput = List.of(edgeAB, edgeBC);
         assertEquals(expectedOutput, polygon.getConnectedEdges(pointB));
@@ -78,13 +81,15 @@ public class PolygonTest {
         Edge edgeCD = new Edge(pointC, pointD);
         Edge edgeDA = new Edge(pointD, pointA);
 
+        List<Point> points = List.of(pointA, pointB, pointC, pointD);
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
-        Polygon polygon = new Polygon(edges);
+        Polygon polygon = new Polygon(points, edges);
         polygon.removePoint(pointB);
 
+        List<Point> expectedPoints = List.of(pointA, pointC, pointD);
         Edge edgeAC = new Edge(pointA, pointC);
         List<Edge> expectedEdges = Arrays.asList(edgeCD, edgeDA, edgeAC);
-        Polygon expectedPolygon = new Polygon(expectedEdges);
+        Polygon expectedPolygon = new Polygon(expectedPoints, expectedEdges);
 
         assertEquals(expectedPolygon.toString(), polygon.toString());
     }
