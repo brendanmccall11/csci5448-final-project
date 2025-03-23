@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Polygon {
+public class Polygon extends java.awt.Polygon {
 
     private final List<Point> points = new ArrayList<>();
     private final List<Edge> edges = new ArrayList<>();

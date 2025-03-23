@@ -4,8 +4,6 @@ import java.awt.*;
 public class Drawer extends JPanel {
 
     private final Polygon polygon;
-    private final int RADIUS_OF_POINT = 7;
-    private final int DIAMETER = 2 * RADIUS_OF_POINT;
 
     public Drawer(Polygon polygon) {
         this.polygon = polygon;
@@ -14,32 +12,33 @@ public class Drawer extends JPanel {
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+        Point[] points = changePointsToArray(polygon);
 
-//        graphics.setColor(Color.BLACK);
-//        graphics.drawRect(100, 100, 50, 200);
-
-        graphics.setColor(Color.BLUE);
-        int xCoordinate = 100;
-        int yCoordinate = 100;
-        graphics.fillOval(xCoordinate - RADIUS_OF_POINT, yCoordinate - RADIUS_OF_POINT, DIAMETER, DIAMETER);
-
-        //graphics.drawPolygon(polygon);
-
-
-
+        drawPoints(graphics, points);
+        graphics.drawPolygon(PolygonWrapper.wrap((points)));
     }
 
-//    private Polygon polygonWrapper(){
-//        int[] xCoordinates = new int[0];
-//        int[] yCoordinates = new int[0];
-//
-//
-//
-//    }
+    private Point[] changePointsToArray(Polygon polygon){
+        Point[] points = new Point[polygon.getPoints().size()];
+        for(int i = 0; i < polygon.getPoints().size(); i++) {
+            points[i] = polygon.getPoints().get(i);
+        }
+        return points;
+    }
 
+    private void drawPoints(Graphics graphics, Point[] points){
+        graphics.setColor(Color.BLUE);
+        for (Point point : points) {
+            drawPoint(graphics, point);
+        }
+    }
 
+    private void drawPoint(Graphics graphics, Point point){
+        int xCoordinate = point.getXValue();
+        int yCoordinate = point.getYValue();
+        int RADIUS_OF_POINT = 7;
+        int DIAMETER = 2 * RADIUS_OF_POINT;
+        graphics.fillOval(xCoordinate - RADIUS_OF_POINT, yCoordinate - RADIUS_OF_POINT, DIAMETER, DIAMETER);
 
-
-
-
+    }
 }

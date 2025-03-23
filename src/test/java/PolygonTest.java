@@ -7,10 +7,10 @@ public class PolygonTest {
 
     @Test
     public void testPolygonString() {
-        Point pointA = new Point(2.3, 3.1);
-        Point pointB = new Point(4.5, 1.2);
-        Point pointC = new Point(5.7, 4.8);
-        Point pointD = new Point(6.3, 2.1);
+        Point pointA = new Point(230, 310);
+        Point pointB = new Point(450, 120);
+        Point pointC = new Point(570, 480);
+        Point pointD = new Point(630, 210);
 
         Edge edgeAB = new Edge(pointA, pointB);
         Edge edgeBC = new Edge(pointB, pointC);
@@ -30,10 +30,10 @@ public class PolygonTest {
 
     @Test
     public void testRemoveEdge() {
-        Point pointA = new Point(2.3, 3.1);
-        Point pointB = new Point(4.5, 1.2);
-        Point pointC = new Point(5.7, 4.8);
-        Point pointD = new Point(6.3, 2.1);
+        Point pointA = new Point(230, 310);
+        Point pointB = new Point(450, 120);
+        Point pointC = new Point(570, 480);
+        Point pointD = new Point(630, 210);
 
         Edge edgeAB = new Edge(pointA, pointB);
         Edge edgeBC = new Edge(pointB, pointC);
@@ -51,10 +51,10 @@ public class PolygonTest {
 
     @Test
     public void testGetConnectedEdges(){
-        Point pointA = new Point(2.3, 3.1);
-        Point pointB = new Point(4.5, 1.2);
-        Point pointC = new Point(5.7, 4.8);
-        Point pointD = new Point(6.3, 2.1);
+        Point pointA = new Point(230, 310);
+        Point pointB = new Point(450, 120);
+        Point pointC = new Point(570, 480);
+        Point pointD = new Point(630, 210);
 
         Edge edgeAB = new Edge(pointA, pointB);
         Edge edgeBC = new Edge(pointB, pointC);
@@ -71,10 +71,10 @@ public class PolygonTest {
 
     @Test
     public void testGetPoints(){
-        Point pointA = new Point(2.3, 3.1);
-        Point pointB = new Point(4.5, 1.2);
-        Point pointC = new Point(5.7, 4.8);
-        Point pointD = new Point(6.3, 2.1);
+        Point pointA = new Point(230, 310);
+        Point pointB = new Point(450, 120);
+        Point pointC = new Point(570, 480);
+        Point pointD = new Point(630, 210);
 
         Edge edgeAB = new Edge(pointA, pointB);
         Edge edgeBC = new Edge(pointB, pointC);
@@ -94,10 +94,10 @@ public class PolygonTest {
 
     @Test
     public void testRemovePoint(){
-        Point pointA = new Point(2.3, 3.1);
-        Point pointB = new Point(4.5, 1.2);
-        Point pointC = new Point(5.7, 4.8);
-        Point pointD = new Point(6.3, 2.1);
+        Point pointA = new Point(230, 310);
+        Point pointB = new Point(450, 120);
+        Point pointC = new Point(570, 480);
+        Point pointD = new Point(630, 210);
 
         Edge edgeAB = new Edge(pointA, pointB);
         Edge edgeBC = new Edge(pointB, pointC);

@@ -1,9 +1,9 @@
 public class Point {
 
-    private final double xValue;
-    private final double yValue;
+    private final int xValue;
+    private final int yValue;
 
-    public Point(double xValue, double yValue) {
+    public Point(int xValue, int yValue) {
         this.xValue = xValue;
         this.yValue = yValue;
     }
@@ -11,6 +11,14 @@ public class Point {
     @Override
     public String toString() {
         return "(" + xValue + ", " + yValue + ")";
+    }
+
+    public int getXValue() {
+        return xValue;
+    }
+
+    public int getYValue() {
+        return yValue;
     }
 
 }
