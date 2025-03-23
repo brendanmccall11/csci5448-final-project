@@ -1,3 +1,5 @@
+package DrawingComponents;
+
 import PolygonComponents.Point;
 import PolygonComponents.Polygon;
 import javax.swing.*;

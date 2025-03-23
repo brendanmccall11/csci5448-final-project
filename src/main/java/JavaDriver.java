@@ -8,8 +8,7 @@ public class JavaDriver {
 
     public static void main(String[] args) {
         Polygon polygon = createPolygon();
-        DrawPolygon drawPolygon = new DrawPolygon(polygon);
-        drawPolygon.draw();
+        polygon.draw();
     }
 
     public static Polygon createPolygon() {

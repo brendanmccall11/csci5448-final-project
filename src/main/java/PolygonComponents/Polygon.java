@@ -1,7 +1,9 @@
 package PolygonComponents;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import DrawingComponents.Drawer;
 
 public class Polygon extends java.awt.Polygon {
 
@@ -65,6 +67,17 @@ public class Polygon extends java.awt.Polygon {
     private void removePreviousEdges(List<Edge> connectedEdges) {
         edges.remove(connectedEdges.getFirst());
         edges.remove(connectedEdges.getLast());
+    }
+
+    public void draw(){
+        Drawer drawPolygon = new Drawer(this);
+        JFrame frame = new JFrame();
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(drawPolygon);
+
+        frame.setSize(500, 500);
+        frame.setVisible(true);
     }
 
 }
