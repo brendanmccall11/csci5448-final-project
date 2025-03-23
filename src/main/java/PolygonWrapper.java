@@ -8,8 +8,8 @@ public class PolygonWrapper {
         int[] yCoordinates = new int[numberOfPoints];
 
         for(int i = 0; i < numberOfPoints; i++){
-            xCoordinates[i] = (int) points[i].getXValue();
-            yCoordinates[i] = (int) points[i].getYValue();
+            xCoordinates[i] = points[i].getXValue();
+            yCoordinates[i] = points[i].getYValue();
         }
         return new Polygon(xCoordinates, yCoordinates, numberOfPoints);
     }
