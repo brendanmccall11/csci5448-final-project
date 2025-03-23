@@ -1,3 +1,8 @@
+package PolygonComponentsTests;
+
+import PolygonComponents.Edge;
+import PolygonComponents.Point;
+import PolygonComponents.Polygon;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +26,7 @@ public class PolygonTest {
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
         Polygon polygon = new Polygon(points, edges);
 
-        StringBuilder expectedOutput = new StringBuilder("Polygon:\n");
+        StringBuilder expectedOutput = new StringBuilder("PolygonComponents.Polygon:\n");
         for (Edge edge : polygon.getEdges()) {
             expectedOutput.append(edge.toString()).append("\n");
         }

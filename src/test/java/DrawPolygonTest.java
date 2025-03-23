@@ -1,8 +1,10 @@
+import PolygonComponents.Edge;
+import PolygonComponents.Point;
+import PolygonComponents.Polygon;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
-public class PolygonOutputTest {
+public class DrawPolygonTest {
 
     @Test
     public void testPolygonOutput() {
@@ -20,8 +22,8 @@ public class PolygonOutputTest {
         List<Edge> edges = List.of(edgeAB, edgeBC, edgeCD, edgeDA);
         Polygon polygon = new Polygon(points, edges);
 
-        PolygonOutput polygonOutput = new PolygonOutput(polygon);
-        polygonOutput.draw();
+        DrawPolygon drawPolygon = new DrawPolygon(polygon);
+        drawPolygon.draw();
 
     }
 

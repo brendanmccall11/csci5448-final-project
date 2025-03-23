@@ -1,3 +1,5 @@
+package PolygonComponents;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "Edge: " + startingPoint + ", " + endingPoint;
+        return "PolygonComponents.Edge: " + startingPoint + ", " + endingPoint;
     }
 
     public Point getStartingPoint() {

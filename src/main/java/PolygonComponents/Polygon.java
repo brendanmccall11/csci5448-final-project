@@ -1,3 +1,5 @@
+package PolygonComponents;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class Polygon extends java.awt.Polygon {
     }
 
     public String toString() {
-        StringBuilder output = new StringBuilder("Polygon:\n");
+        StringBuilder output = new StringBuilder("PolygonComponents.Polygon:\n");
         for (Edge edge : edges) {
             output.append(edge.toString()).append("\n");
         }

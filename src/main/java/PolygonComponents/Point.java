@@ -1,3 +1,5 @@
+package PolygonComponents;
+
 public class Point {
 
     private final int xValue;

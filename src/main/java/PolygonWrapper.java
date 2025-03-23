@@ -1,3 +1,4 @@
+import PolygonComponents.Point;
 import java.awt.Polygon;
 
 public class PolygonWrapper {

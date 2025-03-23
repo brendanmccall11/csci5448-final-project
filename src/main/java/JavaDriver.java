@@ -1,10 +1,12 @@
+import PolygonComponents.Edge;
+import PolygonComponents.Point;
+import PolygonComponents.Polygon;
 import java.util.Arrays;
 import java.util.List;
 
-public class JavaMain {
+public class JavaDriver {
 
     public static void main(String[] args) {
-
         Point pointA = new Point(230, 310);
         Point pointB = new Point(450, 120);
         Point pointC = new Point(570, 480);
@@ -19,9 +21,8 @@ public class JavaMain {
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
         Polygon polygon = new Polygon(points, edges);
 
-        PolygonOutput polygonOutput = new PolygonOutput(polygon);
-        polygonOutput.draw();
-
+        DrawPolygon drawPolygon = new DrawPolygon(polygon);
+        drawPolygon.draw();
     }
 
 }

@@ -1,11 +1,12 @@
 
+import PolygonComponents.Polygon;
 import javax.swing.*;
 
-public class PolygonOutput{
+public class DrawPolygon {
 
     private final Polygon polygon;
 
-    PolygonOutput(Polygon polygon) {
+    DrawPolygon(Polygon polygon) {
         this.polygon = polygon;
     }
 

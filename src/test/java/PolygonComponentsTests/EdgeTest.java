@@ -1,3 +1,8 @@
+package PolygonComponentsTests;
+
+import PolygonComponents.Edge;
+import PolygonComponents.Point;
+import PolygonComponents.Polygon;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,7 +14,7 @@ public class EdgeTest {
         Point pointA = new Point(10, 20);
         Point pointB = new Point(30, 40);
         Edge edge = new Edge(pointA, pointB);
-        String expectedOutput = "Edge: " + pointA + ", " + pointB;
+        String expectedOutput = "PolygonComponents.Edge: " + pointA + ", " + pointB;
         assertEquals(expectedOutput, edge.toString());
     }
 

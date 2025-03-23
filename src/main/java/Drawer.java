@@ -1,34 +1,36 @@
+import PolygonComponents.Point;
+import PolygonComponents.Polygon;
 import javax.swing.*;
 import java.awt.*;
 
 public class Drawer extends JPanel {
 
-    private final Polygon polygon;
+    private final PolygonComponents.Polygon polygon;
 
-    public Drawer(Polygon polygon) {
+    public Drawer(PolygonComponents.Polygon polygon) {
         this.polygon = polygon;
     }
 
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        Point[] points = changePointsToArray(polygon);
+        PolygonComponents.Point[] points = changePointsToArray(polygon);
 
         drawPoints(graphics, points);
         graphics.drawPolygon(PolygonWrapper.wrap((points)));
     }
 
-    private Point[] changePointsToArray(Polygon polygon){
-        Point[] points = new Point[polygon.getPoints().size()];
+    private PolygonComponents.Point[] changePointsToArray(Polygon polygon){
+        PolygonComponents.Point[] points = new PolygonComponents.Point[polygon.getPoints().size()];
         for(int i = 0; i < polygon.getPoints().size(); i++) {
             points[i] = polygon.getPoints().get(i);
         }
         return points;
     }
 
-    private void drawPoints(Graphics graphics, Point[] points){
+    private void drawPoints(Graphics graphics, PolygonComponents.Point[] points){
         graphics.setColor(Color.BLUE);
-        for (Point point : points) {
+        for (PolygonComponents.Point point : points) {
             drawPoint(graphics, point);
         }
     }
