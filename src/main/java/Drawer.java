@@ -41,6 +41,5 @@ public class Drawer extends JPanel {
         int RADIUS_OF_POINT = 7;
         int DIAMETER = 2 * RADIUS_OF_POINT;
         graphics.fillOval(xCoordinate - RADIUS_OF_POINT, yCoordinate - RADIUS_OF_POINT, DIAMETER, DIAMETER);
-
     }
 }
