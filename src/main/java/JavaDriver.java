@@ -7,6 +7,12 @@ import java.util.List;
 public class JavaDriver {
 
     public static void main(String[] args) {
+        Polygon polygon = createPolygon();
+        DrawPolygon drawPolygon = new DrawPolygon(polygon);
+        drawPolygon.draw();
+    }
+
+    public static Polygon createPolygon() {
         Point pointA = new Point(50, 100);
         Point pointB = new Point(100, 150);
         Point pointC = new Point(150, 100);
@@ -23,10 +29,7 @@ public class JavaDriver {
 
         List<Point> points = List.of(pointA, pointB, pointC, pointD, pointE, pointF);
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDE, edgeEF, edgeFA);
-        Polygon polygon = new Polygon(points, edges);
-
-        DrawPolygon drawPolygon = new DrawPolygon(polygon);
-        drawPolygon.draw();
+        return new Polygon(points, edges);
     }
 
 }
