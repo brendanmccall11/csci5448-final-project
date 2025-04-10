@@ -1,5 +1,3 @@
-package PolygonComponentsTests;
-
 import PolygonComponents.Edge;
 import PolygonComponents.Point;
 import PolygonComponents.Polygon;
@@ -53,6 +51,26 @@ public class PolygonTest {
         List<Edge> expectedOutput = List.of(edgeBC, edgeCD, edgeDA);
         assertEquals(expectedOutput, polygon.getEdges());
     }
+//
+//    @Test
+//    public void testGetConnectedEdges(){
+//        Point pointA = new Point(230, 310);
+//        Point pointB = new Point(450, 120);
+//        Point pointC = new Point(570, 480);
+//        Point pointD = new Point(630, 210);
+//
+//        Edge edgeAB = new Edge(pointA, pointB);
+//        Edge edgeBC = new Edge(pointB, pointC);
+//        Edge edgeCD = new Edge(pointC, pointD);
+//        Edge edgeDA = new Edge(pointD, pointA);
+//
+//        List<Point> points = List.of(pointA, pointB, pointC, pointD);
+//        List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
+//        Polygon polygon = new Polygon(points, edges);
+//
+//        List<Edge> expectedOutput = List.of(edgeAB, edgeBC);
+//        assertEquals(expectedOutput, polygon.getConnectedEdges(pointB));
+//    }
 
     @Test
     public void testGetConnectedEdges(){
@@ -70,8 +88,8 @@ public class PolygonTest {
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
         Polygon polygon = new Polygon(points, edges);
 
-        List<Edge> expectedOutput = List.of(edgeAB, edgeBC);
-        assertEquals(expectedOutput, polygon.getConnectedEdges(pointB));
+        List<Edge> expectedOutput = List.of(edgeAB, edgeCD);
+        assertEquals(expectedOutput, polygon.getConnectedEdges(edgeBC));
     }
 
     @Test

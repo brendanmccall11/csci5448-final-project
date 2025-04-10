@@ -23,9 +23,9 @@ public class Polygon extends java.awt.Polygon {
         this.edges.addAll(edges);
     }
 
-    public void removeEdge(Edge e) {
-        edges.remove(e);
-    }
+//    public void removeEdge(Edge e) {
+//        edges.remove(e);
+//    }
 
     public List<Point> getPoints() {
         return points;
@@ -78,6 +78,44 @@ public class Polygon extends java.awt.Polygon {
 
         frame.setSize(500, 500);
         frame.setVisible(true);
+    }
+
+    public void removeEdge(Edge edge){
+        this.edges.remove(edge);
+
+        List<Edge> connectedEdges = getConnectedEdges(edge);
+        Edge firstAdjacentEdge = connectedEdges.getFirst();
+        Edge secondAdjacentEdge = connectedEdges.getLast();
+
+
+        Point startingPoint = edge.getStartingPoint();
+        Point endingPoint = edge.getEndingPoint();
+
+//        if(startingPoint.equals(secondAdjacentEdge.getStartingPoint())){
+//            secondAdjacentEdge.setStartingPoint(endingPoint);
+//        } else if (startingPoint.equals(secondAdjacentEdge.getEndingPoint())){
+//            secondAdjacentEdge.setEndingPoint(endingPoint);
+//        } else if (endingPoint.equals(secondAdjacentEdge.getStartingPoint())){
+//            secondAdjacentEdge.setStartingPoint(startingPoint);
+//        } else if (endingPoint.equals(secondAdjacentEdge.getEndingPoint())){
+//            secondAdjacentEdge.setEndingPoint(startingPoint);
+//        }
+
+
+    }
+
+    public List<Edge> getConnectedEdges(Edge givenEdge){
+        Point startingPoint = givenEdge.getStartingPoint();
+        Point endingPoint = givenEdge.getEndingPoint();
+
+        List<Edge> connectedStartingPointEdges = getConnectedEdges(startingPoint);
+        List<Edge> connectedEndingPointEdges = getConnectedEdges(endingPoint);
+
+        connectedStartingPointEdges.remove(givenEdge);
+        connectedEndingPointEdges.remove(givenEdge);
+
+        List<Edge> connectedEdges = List.of(connectedStartingPointEdges.getFirst(), connectedEndingPointEdges.getFirst());
+        return connectedEdges;
     }
 
 }
