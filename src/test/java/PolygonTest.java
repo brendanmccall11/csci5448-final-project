@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PolygonTest {
 
@@ -35,8 +36,8 @@ public class PolygonTest {
     public void testRemoveEdge() {
         Point pointA = new Point(230, 310);
         Point pointB = new Point(450, 120);
-        Point pointC = new Point(570, 480);
-        Point pointD = new Point(630, 210);
+        Point pointC = new Point(630, 210);
+        Point pointD = new Point(570, 480);
 
         Edge edgeAB = new Edge(pointA, pointB);
         Edge edgeBC = new Edge(pointB, pointC);
@@ -50,6 +51,12 @@ public class PolygonTest {
         polygon.removeEdge(edgeAB);
         List<Edge> expectedOutput = List.of(edgeBC, edgeCD, edgeDA);
         assertEquals(expectedOutput, polygon.getEdges());
+
+        assertTrue(edgeBC.getStartingPoint() == pointC || edgeBC.getEndingPoint() == pointC);
+        assertTrue(edgeDA.getStartingPoint() == pointD || edgeDA.getEndingPoint() == pointD);
+
+        assertTrue((edgeBC.getStartingPoint() == pointB || edgeBC.getEndingPoint() == pointB) || (edgeBC.getStartingPoint() == pointA || edgeBC.getEndingPoint() == pointA));
+        assertTrue((edgeDA.getStartingPoint() == pointB || edgeDA.getEndingPoint() == pointB) || (edgeDA.getStartingPoint() == pointA || edgeDA.getEndingPoint() == pointA));
     }
 
     @Test

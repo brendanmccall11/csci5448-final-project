@@ -23,10 +23,6 @@ public class Polygon extends java.awt.Polygon {
         this.edges.addAll(edges);
     }
 
-//    public void removeEdge(Edge e) {
-//        edges.remove(e);
-//    }
-
     public List<Point> getPoints() {
         return points;
     }
@@ -36,7 +32,7 @@ public class Polygon extends java.awt.Polygon {
     }
 
     public String toString() {
-        StringBuilder output = new StringBuilder("PolygonComponents.Polygon:\n");
+        StringBuilder output = new StringBuilder("Polygon:\n");
         for (Edge edge : edges) {
             output.append(edge.toString()).append("\n");
         }
@@ -91,16 +87,15 @@ public class Polygon extends java.awt.Polygon {
         Point startingPoint = edge.getStartingPoint();
         Point endingPoint = edge.getEndingPoint();
 
-//        if(startingPoint.equals(secondAdjacentEdge.getStartingPoint())){
-//            secondAdjacentEdge.setStartingPoint(endingPoint);
-//        } else if (startingPoint.equals(secondAdjacentEdge.getEndingPoint())){
-//            secondAdjacentEdge.setEndingPoint(endingPoint);
-//        } else if (endingPoint.equals(secondAdjacentEdge.getStartingPoint())){
-//            secondAdjacentEdge.setStartingPoint(startingPoint);
-//        } else if (endingPoint.equals(secondAdjacentEdge.getEndingPoint())){
-//            secondAdjacentEdge.setEndingPoint(startingPoint);
-//        }
-
+        if(startingPoint.equals(secondAdjacentEdge.getStartingPoint())){
+            secondAdjacentEdge.setStartingPoint(endingPoint);
+        } else if (startingPoint.equals(secondAdjacentEdge.getEndingPoint())){
+            secondAdjacentEdge.setEndingPoint(endingPoint);
+        } else if (endingPoint.equals(secondAdjacentEdge.getStartingPoint())){
+            secondAdjacentEdge.setStartingPoint(startingPoint);
+        } else if (endingPoint.equals(secondAdjacentEdge.getEndingPoint())){
+            secondAdjacentEdge.setEndingPoint(startingPoint);
+        }
 
     }
 

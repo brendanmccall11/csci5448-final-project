@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Edge {
 
-    private final Point startingPoint;
-    private final Point endingPoint;
+    private Point startingPoint;
+    private Point endingPoint;
 
     public Edge(Point startingPoint, Point endingPoint) {
         this.startingPoint = startingPoint;
@@ -15,7 +15,7 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "PolygonComponents.Edge: " + startingPoint + ", " + endingPoint;
+        return "Edge: " + startingPoint + ", " + endingPoint;
     }
 
     public Point getStartingPoint() {
@@ -24,6 +24,14 @@ public class Edge {
 
     public Point getEndingPoint() {
         return endingPoint;
+    }
+
+    public void setStartingPoint(Point startingPoint) {
+        this.startingPoint = startingPoint;
+    }
+
+    public void setEndingPoint(Point endingPoint) {
+        this.endingPoint = endingPoint;
     }
 
     public Boolean isConnectedEdge(Point point){
