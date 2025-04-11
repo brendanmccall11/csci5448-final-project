@@ -15,28 +15,28 @@ public class Polygon extends java.awt.Polygon {
         addEdges(edges);
     }
 
-    private void addPoints(List<Point> points){
-        this.points.addAll(points);
-    }
-
-    private void addEdges(List<Edge> edges){
-        this.edges.addAll(edges);
-    }
-
-    public List<Point> getPoints() {
-        return points;
-    }
-
-    public List<Edge> getEdges(){
-        return edges;
-    }
-
     public String toString() {
         StringBuilder output = new StringBuilder("Polygon:\n");
         for (Edge edge : edges) {
             output.append(edge.toString()).append("\n");
         }
         return output.toString();
+    }
+
+    public List<Edge> getEdges(){
+        return edges;
+    }
+
+    public List<Point> getPoints() {
+        return points;
+    }
+
+    private void addEdges(List<Edge> edges){
+        this.edges.addAll(edges);
+    }
+
+    private void addPoints(List<Point> points){
+        this.points.addAll(points);
     }
 
     public void removePoint(Point deletedPoint){
@@ -46,16 +46,6 @@ public class Polygon extends java.awt.Polygon {
         removePreviousEdges(connectedEdges);
     }
 
-    public List<Edge> getConnectedEdges(Point givenPoint) {
-        List<Edge> connectedEdges = new ArrayList<>();
-        for(Edge edge : edges){
-            if(edge.isConnectedEdge(givenPoint)){
-                connectedEdges.add(edge);
-            }
-        }
-        return connectedEdges;
-    }
-
     private void addNewEdge(Edge newEdge) {
         edges.add(newEdge);
     }
@@ -63,17 +53,6 @@ public class Polygon extends java.awt.Polygon {
     private void removePreviousEdges(List<Edge> connectedEdges) {
         edges.remove(connectedEdges.getFirst());
         edges.remove(connectedEdges.getLast());
-    }
-
-    public void draw(){
-        Drawer drawPolygon = new Drawer(this);
-        JFrame frame = new JFrame();
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(drawPolygon);
-
-        frame.setSize(500, 500);
-        frame.setVisible(true);
     }
 
     public void removeEdge(Edge edge){
@@ -93,7 +72,16 @@ public class Polygon extends java.awt.Polygon {
         } else if (endingPoint.equals(adjacentEdge.getEndingPoint())){
             adjacentEdge.setEndingPoint(startingPoint);
         }
+    }
 
+    public List<Edge> getConnectedEdges(Point givenPoint) {
+        List<Edge> connectedEdges = new ArrayList<>();
+        for(Edge edge : edges){
+            if(edge.isConnectedEdge(givenPoint)){
+                connectedEdges.add(edge);
+            }
+        }
+        return connectedEdges;
     }
 
     public List<Edge> getConnectedEdges(Edge givenEdge){
@@ -107,6 +95,17 @@ public class Polygon extends java.awt.Polygon {
         connectedEndingPointEdges.remove(givenEdge);
 
         return List.of(connectedStartingPointEdges.getFirst(), connectedEndingPointEdges.getFirst());
+    }
+
+    public void draw(){
+        Drawer drawPolygon = new Drawer(this);
+        JFrame frame = new JFrame();
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(drawPolygon);
+
+        frame.setSize(500, 500);
+        frame.setVisible(true);
     }
 
 }
