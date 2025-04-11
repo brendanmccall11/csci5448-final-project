@@ -1,3 +1,5 @@
+package PolygonComponentsTests;
+
 import PolygonComponents.Edge;
 import PolygonComponents.Point;
 import PolygonComponents.Polygon;
