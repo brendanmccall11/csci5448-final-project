@@ -65,12 +65,16 @@ public class Polygon extends java.awt.Polygon {
 
         if(startingPoint.equals(adjacentEdge.getStartingPoint())){
             adjacentEdge.setStartingPoint(endingPoint);
+            this.points.remove(startingPoint);
         } else if (startingPoint.equals(adjacentEdge.getEndingPoint())){
             adjacentEdge.setEndingPoint(endingPoint);
+            this.points.remove(startingPoint);
         } else if (endingPoint.equals(adjacentEdge.getStartingPoint())){
             adjacentEdge.setStartingPoint(startingPoint);
+            this.points.remove(endingPoint);
         } else if (endingPoint.equals(adjacentEdge.getEndingPoint())){
             adjacentEdge.setEndingPoint(startingPoint);
+            this.points.remove(endingPoint);
         }
     }
 

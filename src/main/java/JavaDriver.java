@@ -8,6 +8,10 @@ public class JavaDriver {
 
     public static void main(String[] args) {
         Polygon polygon = createPolygon();
+        //polygon.draw();
+
+        polygon.removeEdge(polygon.getEdges().get(2));
+        System.out.println(polygon);
         polygon.draw();
     }
 
