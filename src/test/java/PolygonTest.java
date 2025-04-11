@@ -25,7 +25,7 @@ public class PolygonTest {
         List<Edge> edges = Arrays.asList(edgeAB, edgeBC, edgeCD, edgeDA);
         Polygon polygon = new Polygon(points, edges);
 
-        StringBuilder expectedOutput = new StringBuilder("PolygonComponents.Polygon:\n");
+        StringBuilder expectedOutput = new StringBuilder("Polygon:\n");
         for (Edge edge : polygon.getEdges()) {
             expectedOutput.append(edge.toString()).append("\n");
         }

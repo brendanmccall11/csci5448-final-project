@@ -78,23 +78,20 @@ public class Polygon extends java.awt.Polygon {
 
     public void removeEdge(Edge edge){
         this.edges.remove(edge);
-
         List<Edge> connectedEdges = getConnectedEdges(edge);
-        Edge firstAdjacentEdge = connectedEdges.getFirst();
-        Edge secondAdjacentEdge = connectedEdges.getLast();
-
+        Edge adjacentEdge = connectedEdges.getFirst();
 
         Point startingPoint = edge.getStartingPoint();
         Point endingPoint = edge.getEndingPoint();
 
-        if(startingPoint.equals(secondAdjacentEdge.getStartingPoint())){
-            secondAdjacentEdge.setStartingPoint(endingPoint);
-        } else if (startingPoint.equals(secondAdjacentEdge.getEndingPoint())){
-            secondAdjacentEdge.setEndingPoint(endingPoint);
-        } else if (endingPoint.equals(secondAdjacentEdge.getStartingPoint())){
-            secondAdjacentEdge.setStartingPoint(startingPoint);
-        } else if (endingPoint.equals(secondAdjacentEdge.getEndingPoint())){
-            secondAdjacentEdge.setEndingPoint(startingPoint);
+        if(startingPoint.equals(adjacentEdge.getStartingPoint())){
+            adjacentEdge.setStartingPoint(endingPoint);
+        } else if (startingPoint.equals(adjacentEdge.getEndingPoint())){
+            adjacentEdge.setEndingPoint(endingPoint);
+        } else if (endingPoint.equals(adjacentEdge.getStartingPoint())){
+            adjacentEdge.setStartingPoint(startingPoint);
+        } else if (endingPoint.equals(adjacentEdge.getEndingPoint())){
+            adjacentEdge.setEndingPoint(startingPoint);
         }
 
     }
@@ -109,8 +106,7 @@ public class Polygon extends java.awt.Polygon {
         connectedStartingPointEdges.remove(givenEdge);
         connectedEndingPointEdges.remove(givenEdge);
 
-        List<Edge> connectedEdges = List.of(connectedStartingPointEdges.getFirst(), connectedEndingPointEdges.getFirst());
-        return connectedEdges;
+        return List.of(connectedStartingPointEdges.getFirst(), connectedEndingPointEdges.getFirst());
     }
 
 }
