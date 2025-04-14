@@ -8,11 +8,23 @@ public class JavaDriver {
 
     public static void main(String[] args) {
         Polygon polygon = createPolygon();
-        //polygon.draw();
+        polygon.draw();
+
+
+//        int startingNumberOfEdges = polygon.getEdges().size();
+//        while(polygon.getEdges().size() > startingNumberOfEdges - 1) {
+//            polygon.removeEdge(polygon.getEdges().get(2));
+//            polygon.draw();
+//        }
 
         polygon.removeEdge(polygon.getEdges().get(2));
+        polygon.updateDrawing();
+
+
+
+//        polygon.removeEdge(polygon.getEdges().get(2));
         System.out.println(polygon);
-        polygon.draw();
+//        polygon.draw();
     }
 
     public static Polygon createPolygon() {

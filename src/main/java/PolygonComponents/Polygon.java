@@ -9,6 +9,8 @@ public class Polygon extends java.awt.Polygon {
 
     private final List<Point> points = new ArrayList<>();
     private final List<Edge> edges = new ArrayList<>();
+    private Drawer drawPolygon;
+    private JFrame frame;
 
     public Polygon( List<Point> points, List<Edge> edges) {
         addPoints(points);
@@ -102,14 +104,18 @@ public class Polygon extends java.awt.Polygon {
     }
 
     public void draw(){
-        Drawer drawPolygon = new Drawer(this);
-        JFrame frame = new JFrame();
+        drawPolygon = new Drawer(this);
+        frame = new JFrame();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(drawPolygon);
 
         frame.setSize(500, 500);
         frame.setVisible(true);
+    }
+
+    public void updateDrawing(){
+        frame.add(drawPolygon);
     }
 
 }
