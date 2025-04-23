@@ -15,16 +15,11 @@ public class JavaDriver {
         int numPointsToSkip = calculateDeletedPointsSpacing(polygon, numPointsDeleted);
 
 
-
-
         System.out.println(numPointsToSkip);
         System.out.println("Number of points deleted: " + numPointsDeleted);
 
-        int millisecondsPaused = 2000;
-        Thread.sleep(millisecondsPaused);
 
-        polygon.removeEdge(polygon.getEdges().get(2));
-        polygon.updateDrawing();
+        removeEdge(polygon, 2);
 
         //System.out.println(polygon);
     }
@@ -121,5 +116,12 @@ public class JavaDriver {
 
         double numPointsToSkip = (double) numRemainingPoints / numPointsDeleted;
         return (int) Math.floor(numPointsToSkip);
+    }
+
+    private static void removeEdge(Polygon polygon, int i) throws InterruptedException {
+        int millisecondsPaused = 2000;
+        Thread.sleep(millisecondsPaused);
+        polygon.removeEdge(polygon.getEdges().get(i));
+        polygon.updateDrawing();
     }
 }
