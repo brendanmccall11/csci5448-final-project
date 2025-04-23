@@ -10,7 +10,6 @@ public class Polygon extends java.awt.Polygon {
     private final List<Point> points = new ArrayList<>();
     private final List<Edge> edges = new ArrayList<>();
     private Drawer drawPolygon;
-    private JFrame frame;
 
     public Polygon( List<Point> points, List<Edge> edges) {
         addPoints(points);
@@ -105,7 +104,7 @@ public class Polygon extends java.awt.Polygon {
 
     public void draw(){
         drawPolygon = new Drawer(this);
-        frame = new JFrame();
+        JFrame frame = new JFrame();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
@@ -114,7 +113,7 @@ public class Polygon extends java.awt.Polygon {
         frame.add(drawPolygon);
     }
 
-    public void updateDrawing() throws InterruptedException {
+    public void updateDrawing() {
         drawPolygon.repaint();
     }
 

@@ -10,16 +10,6 @@ public class JavaDriver {
         Polygon polygon = createPolygon20Vertices();
         polygon.draw();
 
-
-
-
-
-
-
-
-
-
-
         int millisecondsPaused = 2000;
         Thread.sleep(millisecondsPaused);
 
