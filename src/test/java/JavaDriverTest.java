@@ -6,7 +6,7 @@ public class JavaDriverTest {
 
     @Test
     public void testCreatePolygon() {
-        Polygon polygon = JavaDriver.createPolygon();
+        Polygon polygon = JavaDriver.createPolygon6Vertices();
         assertNotNull(polygon);
         assertEquals(Polygon.class, polygon.getClass());
     }

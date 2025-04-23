@@ -6,28 +6,30 @@ import java.util.List;
 
 public class JavaDriver {
 
-    public static void main(String[] args) {
-        Polygon polygon = createPolygon();
+    public static void main(String[] args) throws InterruptedException {
+        Polygon polygon = createPolygon20Vertices();
         polygon.draw();
 
 
-//        int startingNumberOfEdges = polygon.getEdges().size();
-//        while(polygon.getEdges().size() > startingNumberOfEdges - 1) {
-//            polygon.removeEdge(polygon.getEdges().get(2));
-//            polygon.draw();
-//        }
+
+
+
+
+
+
+
+
+
+        int millisecondsPaused = 2000;
+        Thread.sleep(millisecondsPaused);
 
         polygon.removeEdge(polygon.getEdges().get(2));
         polygon.updateDrawing();
 
-
-
-//        polygon.removeEdge(polygon.getEdges().get(2));
-        System.out.println(polygon);
-//        polygon.draw();
+        //System.out.println(polygon);
     }
 
-    public static Polygon createPolygon() {
+    public static Polygon createPolygon6Vertices() {
         Point pointA = new Point(50, 100);
         Point pointB = new Point(100, 150);
         Point pointC = new Point(150, 100);
@@ -47,4 +49,62 @@ public class JavaDriver {
         return new Polygon(points, edges);
     }
 
+    public static Polygon createPolygon20Vertices() {
+        Point pointA = new Point(250, 150);
+        Point pointB = new Point(285, 160);
+        Point pointC = new Point(310, 185);
+        Point pointD = new Point(320, 215);
+        Point pointE = new Point(315, 250);
+        Point pointF = new Point(300, 280);
+        Point pointG = new Point(275, 295);
+        Point pointH = new Point(245, 300);
+        Point pointI = new Point(215, 290);
+        Point pointJ = new Point(190, 270);
+        Point pointK = new Point(175, 245);
+        Point pointL = new Point(165, 215);
+        Point pointM = new Point(170, 185);
+        Point pointN = new Point(185, 160);
+        Point pointO = new Point(215, 145);
+        Point pointP = new Point(230, 125);
+        Point pointQ = new Point(260, 120);
+        Point pointR = new Point(280, 130);
+        Point pointS = new Point(295, 145);
+        Point pointT = new Point(270, 140);
+
+        Edge edgeAB = new Edge(pointA, pointB);
+        Edge edgeBC = new Edge(pointB, pointC);
+        Edge edgeCD = new Edge(pointC, pointD);
+        Edge edgeDE = new Edge(pointD, pointE);
+        Edge edgeEF = new Edge(pointE, pointF);
+        Edge edgeFG = new Edge(pointF, pointG);
+        Edge edgeGH = new Edge(pointG, pointH);
+        Edge edgeHI = new Edge(pointH, pointI);
+        Edge edgeIJ = new Edge(pointI, pointJ);
+        Edge edgeJK = new Edge(pointJ, pointK);
+        Edge edgeKL = new Edge(pointK, pointL);
+        Edge edgeLM = new Edge(pointL, pointM);
+        Edge edgeMN = new Edge(pointM, pointN);
+        Edge edgeNO = new Edge(pointN, pointO);
+        Edge edgeOP = new Edge(pointO, pointP);
+        Edge edgePQ = new Edge(pointP, pointQ);
+        Edge edgeQR = new Edge(pointQ, pointR);
+        Edge edgeRS = new Edge(pointR, pointS);
+        Edge edgeST = new Edge(pointS, pointT);
+        Edge edgeTA = new Edge(pointT, pointA);
+
+        List<Point> points = List.of(
+                pointA, pointB, pointC, pointD, pointE,
+                pointF, pointG, pointH, pointI, pointJ,
+                pointK, pointL, pointM, pointN, pointO,
+                pointP, pointQ, pointR, pointS, pointT
+        );
+
+        List<Edge> edges = Arrays.asList(
+                edgeAB, edgeBC, edgeCD, edgeDE, edgeEF,
+                edgeFG, edgeGH, edgeHI, edgeIJ, edgeJK,
+                edgeKL, edgeLM, edgeMN, edgeNO, edgeOP,
+                edgePQ, edgeQR, edgeRS, edgeST, edgeTA
+        );
+        return new Polygon(points, edges);
+    }
 }

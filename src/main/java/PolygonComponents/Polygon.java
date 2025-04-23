@@ -108,14 +108,14 @@ public class Polygon extends java.awt.Polygon {
         frame = new JFrame();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(drawPolygon);
-
         frame.setSize(500, 500);
         frame.setVisible(true);
+
+        frame.add(drawPolygon);
     }
 
-    public void updateDrawing(){
-        frame.add(drawPolygon);
+    public void updateDrawing() throws InterruptedException {
+        drawPolygon.repaint();
     }
 
 }
