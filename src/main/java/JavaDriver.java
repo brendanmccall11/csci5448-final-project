@@ -10,6 +10,16 @@ public class JavaDriver {
         Polygon polygon = createPolygon20Vertices();
         polygon.draw();
 
+        double pointsPreserved = 0.8;
+        int numPointsDeleted = calculateNumPointsToDelete(polygon, pointsPreserved);
+        int numPointsToSkip = calculateDeletedPointsSpacing(polygon, numPointsDeleted);
+
+
+
+
+        System.out.println(numPointsToSkip);
+        System.out.println("Number of points deleted: " + numPointsDeleted);
+
         int millisecondsPaused = 2000;
         Thread.sleep(millisecondsPaused);
 
@@ -96,5 +106,20 @@ public class JavaDriver {
                 edgePQ, edgeQR, edgeRS, edgeST, edgeTA
         );
         return new Polygon(points, edges);
+    }
+
+    private static int calculateNumPointsToDelete(Polygon polygon, double decimalOfPointsPreserved){
+        double pointsLost = 1 - decimalOfPointsPreserved;
+        int numPoints = polygon.getPoints().size();
+        double numPointsToDelete = numPoints*pointsLost;
+        return (int) Math.round(numPointsToDelete);
+    }
+
+    private static int calculateDeletedPointsSpacing(Polygon polygon, int numPointsDeleted) {
+        int numPoints = polygon.getPoints().size();
+        int numRemainingPoints = numPoints - numPointsDeleted;
+
+        double numPointsToSkip = (double) numRemainingPoints / numPointsDeleted;
+        return (int) Math.floor(numPointsToSkip);
     }
 }
