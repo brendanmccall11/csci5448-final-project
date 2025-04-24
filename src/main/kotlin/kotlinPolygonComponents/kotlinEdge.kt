@@ -1,16 +1,6 @@
 package kotlinPolygonComponents
 
-class kotlinEdge {
-
-    private var startingPoint: kotlinPoint? = null
-    private var endingPoint: kotlinPoint? = null
-
-    fun kotlinEdge(startingPoint: kotlinPoint?, endingPoint: kotlinPoint?): kotlinEdge {
-        this.startingPoint = startingPoint
-        this.endingPoint = endingPoint
-
-        return this
-    }
+class kotlinEdge(var startingPoint: kotlinPoint?, var endingPoint: kotlinPoint?) {
 
     override fun toString(): String {
         return "Edge: $startingPoint, $endingPoint"

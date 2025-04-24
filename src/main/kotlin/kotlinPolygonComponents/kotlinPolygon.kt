@@ -4,13 +4,12 @@ import kotlinDrawingComponents.kotlinDrawer
 import java.util.List
 import javax.swing.JFrame
 
-class kotlinPolygon {
-
+class kotlinPolygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEdge>) {
     val points: MutableList<kotlinPoint?> = ArrayList<kotlinPoint?>()
     private val edges: MutableList<kotlinEdge> = ArrayList<kotlinEdge>()
     private var drawPolygon: kotlinDrawer? = null
 
-    fun kotlinPolygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEdge>) {
+    init {
         addPoints(points)
         addEdges(edges)
     }

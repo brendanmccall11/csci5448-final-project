@@ -1,14 +1,6 @@
 package kotlinPolygonComponents
 
-class kotlinPoint {
-
-    var xValue = 0
-    var yValue = 0
-
-    fun kotlinPoint(xValue: Int, yValue: Int) {
-        this.xValue = xValue
-        this.yValue = yValue
-    }
+class kotlinPoint(var xValue: Int, var yValue: Int) {
 
     override fun toString(): String {
         return "($xValue, $yValue)"
