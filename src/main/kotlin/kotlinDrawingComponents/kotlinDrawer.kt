@@ -31,8 +31,8 @@ class kotlinDrawer(private val polygon: kotlinPolygon) : JPanel() {
     }
 
     private fun drawPoint(graphics: Graphics, point: kotlinPoint) {
-        val xCoordinate = point.getXValue()
-        val yCoordinate = point.getYValue()
+        val xCoordinate = point.xValue
+        val yCoordinate = point.yValue
         val RADIUS_OF_POINT = 7
         val DIAMETER = 2 * RADIUS_OF_POINT
         graphics.fillOval(xCoordinate - RADIUS_OF_POINT, yCoordinate - RADIUS_OF_POINT, DIAMETER, DIAMETER)

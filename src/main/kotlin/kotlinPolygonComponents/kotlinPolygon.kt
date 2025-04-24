@@ -4,9 +4,9 @@ import kotlinDrawingComponents.kotlinDrawer
 import java.util.List
 import javax.swing.JFrame
 
-class kotlinPolygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEdge>) {
+class kotlinPolygon(points: MutableList<kotlinPoint?>, edges: MutableList<kotlinEdge?>) {
     val points: MutableList<kotlinPoint?> = ArrayList<kotlinPoint?>()
-    private val edges: MutableList<kotlinEdge> = ArrayList<kotlinEdge>()
+    val edges: MutableList<kotlinEdge?> = ArrayList<kotlinEdge?>()
     private var drawPolygon: kotlinDrawer? = null
 
     init {
@@ -22,25 +22,17 @@ class kotlinPolygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEd
         return output.toString()
     }
 
-    fun getEdges(): Collection<kotlinEdge> {
-        return edges
-    }
-
-    fun getPoints(): Collection<kotlinPoint?> {
-        return points
-    }
-
-    private fun addEdges(edges: Collection<kotlinEdge>) {
+    private fun addEdges(edges: MutableList<kotlinEdge?>) {
         this.edges.addAll(edges)
     }
 
-    private fun addPoints(points: Collection<kotlinPoint?>) {
+    private fun addPoints(points: MutableList<kotlinPoint?>) {
         this.points.addAll(points)
     }
 
     fun removeKotlinPoint(deletedPoint: kotlinPoint?) {
         val connectedEdges = getConnectedEdges(deletedPoint)
-        val tempEdge = kotlinEdge()
+        val tempEdge = kotlinEdge(null, null)
         val newEdge = tempEdge.flipKotlinEdge(connectedEdges)
         addNewEdge(newEdge)
         removePreviousEdges(connectedEdges)
@@ -55,25 +47,25 @@ class kotlinPolygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEd
         edges.remove(connectedEdges.last())
     }
 
-    fun removeKotlinEdge(edge: kotlinEdge) {
+    fun removeKotlinEdge(edge: kotlinEdge?) {
         this.edges.remove(edge)
         val connectedEdges = getConnectedEdges(edge)
         val adjacentEdge: kotlinEdge = connectedEdges.first()
 
-        val startingPoint = edge.getStartingPoint()
-        val endingPoint = edge.getEndingPoint()
+        val startingPoint = edge?.startingPoint  // Changed from getStartingPoint()
+        val endingPoint = edge?.endingPoint     // Changed from getEndingPoint()
 
-        if (startingPoint == adjacentEdge.getStartingPoint()) {
-            adjacentEdge.setStartingPoint(endingPoint)
+        if (startingPoint == adjacentEdge.startingPoint) {
+            adjacentEdge.startingPoint = endingPoint  // Changed from setStartingPoint()
             this.points.remove(startingPoint)
-        } else if (startingPoint == adjacentEdge.getEndingPoint()) {
-            adjacentEdge.setEndingPoint(endingPoint)
+        } else if (startingPoint == adjacentEdge.endingPoint) {
+            adjacentEdge.endingPoint = endingPoint  // Changed from setEndingPoint()
             this.points.remove(startingPoint)
-        } else if (endingPoint == adjacentEdge.getStartingPoint()) {
-            adjacentEdge.setStartingPoint(startingPoint)
+        } else if (endingPoint == adjacentEdge.startingPoint) {
+            adjacentEdge.startingPoint = startingPoint  // Changed from setStartingPoint()
             this.points.remove(endingPoint)
-        } else if (endingPoint == adjacentEdge.getEndingPoint()) {
-            adjacentEdge.setEndingPoint(startingPoint)
+        } else if (endingPoint == adjacentEdge.endingPoint) {
+            adjacentEdge.endingPoint = startingPoint  // Changed from setEndingPoint()
             this.points.remove(endingPoint)
         }
     }
@@ -81,16 +73,18 @@ class kotlinPolygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEd
     fun getConnectedEdges(givenPoint: kotlinPoint?): MutableList<kotlinEdge> {
         val connectedEdges: MutableList<kotlinEdge> = ArrayList<kotlinEdge>()
         for (edge in edges) {
-            if (edge.isConnectedEdge(givenPoint)) {
-                connectedEdges.add(edge)
+            edge?.let {
+                if (it.isConnectedEdge(givenPoint)) {
+                    connectedEdges.add(edge)
+                }
             }
         }
         return connectedEdges
     }
 
-    fun getConnectedEdges(givenEdge: kotlinEdge): MutableList<kotlinEdge> {
-        val startingPoint = givenEdge.getStartingPoint()
-        val endingPoint = givenEdge.getEndingPoint()
+    fun getConnectedEdges(givenEdge: kotlinEdge?): MutableList<kotlinEdge> {
+        val startingPoint = givenEdge?.startingPoint  // Changed from getStartingPoint()
+        val endingPoint = givenEdge?.endingPoint     // Changed from getEndingPoint()
 
         val connectedStartingPointEdges = getConnectedEdges(startingPoint)
         val connectedEndingPointEdges = getConnectedEdges(endingPoint)
