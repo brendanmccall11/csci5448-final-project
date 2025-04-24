@@ -10,7 +10,7 @@ class kotlinPolygon {
     private val edges: MutableList<kotlinEdge> = ArrayList<kotlinEdge>()
     private var drawPolygon: kotlinDrawer? = null
 
-    fun Polygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEdge>) {
+    fun kotlinPolygon(points: Collection<kotlinPoint?>, edges: Collection<kotlinEdge>) {
         addPoints(points)
         addEdges(edges)
     }
