@@ -10,13 +10,8 @@ public class JavaDriver {
         Polygon polygon = createPolygon20Vertices();
         polygon.draw();
 
-        int millisecondsPaused = 2000;
-        Thread.sleep(millisecondsPaused);
-
-        polygon.removeEdge(polygon.getEdges().get(2));
-        polygon.updateDrawing();
-
-        //System.out.println(polygon);
+        double pointsPreserved = 0.8;
+        deleteEdges(polygon, pointsPreserved);
     }
 
     public static Polygon createPolygon6Vertices() {
@@ -96,5 +91,47 @@ public class JavaDriver {
                 edgePQ, edgeQR, edgeRS, edgeST, edgeTA
         );
         return new Polygon(points, edges);
+    }
+
+    private static int calculateNumPointsToDelete(Polygon polygon, double decimalOfPointsPreserved){
+        double pointsLost = 1 - decimalOfPointsPreserved;
+        int numPoints = polygon.getPoints().size();
+        double numPointsToDelete = numPoints*pointsLost;
+        return (int) Math.round(numPointsToDelete);
+    }
+
+    private static int calculateDeletedPointsSpacing(Polygon polygon, int numPointsDeleted) {
+        int numPoints = polygon.getPoints().size();
+        int numRemainingPoints = numPoints - numPointsDeleted;
+
+        double numPointsToSkip = (double) numRemainingPoints / numPointsDeleted;
+        return (int) Math.floor(numPointsToSkip);
+    }
+
+    private static void removeEdge(Polygon polygon, int i) throws InterruptedException {
+        int millisecondsPaused = 1000;
+        Thread.sleep(millisecondsPaused);
+        polygon.removeEdge(polygon.getEdges().get(i));
+        polygon.updateDrawing();
+    }
+
+    private static void deleteEdges(Polygon polygon, double pointsPreserved) throws InterruptedException {
+        int numPointsDeleted = calculateNumPointsToDelete(polygon, pointsPreserved);
+        int numPointsToSkip = calculateDeletedPointsSpacing(polygon, numPointsDeleted);
+
+        int numEdgesDeletedSoFar = 0;
+        int currentEdge= 0;
+        int numEdgesSkipped = 0;
+        while(numEdgesDeletedSoFar != numPointsDeleted) {
+
+            if(numEdgesSkipped == numPointsToSkip) {
+                removeEdge(polygon, currentEdge);
+                numEdgesDeletedSoFar++;
+                numEdgesSkipped = 0;
+            }else{
+                numEdgesSkipped++;
+                currentEdge++;
+            }
+        }
     }
 }
