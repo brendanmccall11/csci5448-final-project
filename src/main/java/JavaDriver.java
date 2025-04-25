@@ -11,17 +11,7 @@ public class JavaDriver {
         polygon.draw();
 
         double pointsPreserved = 0.8;
-        int numPointsDeleted = calculateNumPointsToDelete(polygon, pointsPreserved);
-        int numPointsToSkip = calculateDeletedPointsSpacing(polygon, numPointsDeleted);
-
-
-        System.out.println(numPointsToSkip);
-        System.out.println("Number of points deleted: " + numPointsDeleted);
-
-
-        removeEdge(polygon, 2);
-
-        //System.out.println(polygon);
+        deleteEdges(polygon, pointsPreserved);
     }
 
     public static Polygon createPolygon6Vertices() {
@@ -119,9 +109,29 @@ public class JavaDriver {
     }
 
     private static void removeEdge(Polygon polygon, int i) throws InterruptedException {
-        int millisecondsPaused = 2000;
+        int millisecondsPaused = 1000;
         Thread.sleep(millisecondsPaused);
         polygon.removeEdge(polygon.getEdges().get(i));
         polygon.updateDrawing();
+    }
+
+    private static void deleteEdges(Polygon polygon, double pointsPreserved) throws InterruptedException {
+        int numPointsDeleted = calculateNumPointsToDelete(polygon, pointsPreserved);
+        int numPointsToSkip = calculateDeletedPointsSpacing(polygon, numPointsDeleted);
+
+        int numEdgesDeletedSoFar = 0;
+        int currentEdge= 0;
+        int numEdgesSkipped = 0;
+        while(numEdgesDeletedSoFar != numPointsDeleted) {
+
+            if(numEdgesSkipped == numPointsToSkip) {
+                removeEdge(polygon, currentEdge);
+                numEdgesDeletedSoFar++;
+                numEdgesSkipped = 0;
+            }else{
+                numEdgesSkipped++;
+                currentEdge++;
+            }
+        }
     }
 }
