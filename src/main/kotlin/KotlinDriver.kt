@@ -1,8 +1,10 @@
 import kotlinPolygonComponents.kotlinEdge
 import kotlinPolygonComponents.kotlinPoint
 import kotlinPolygonComponents.kotlinPolygon
-import java.util.*
-import java.util.List
+import kotlin.collections.MutableList
+import kotlin.collections.listOf
+import kotlin.math.floor
+import kotlin.math.roundToInt
 
 class KotlinDriver {
 
@@ -13,11 +15,8 @@ class KotlinDriver {
                 val kotlinPolygon = createPolygon20Vertices()
                 kotlinPolygon.draw()
 
-                val millisecondsPaused = 2000
-                Thread.sleep(millisecondsPaused.toLong())
-
-                kotlinPolygon.removeKotlinEdge(kotlinPolygon.edges.elementAt(2))
-                kotlinPolygon.updateDrawing()
+                val pointsPreserved = 0.8
+                deleteEdges(kotlinPolygon, pointsPreserved)
             }
         }
     }
@@ -37,9 +36,9 @@ class KotlinDriver {
         val edgeEF = kotlinEdge(pointE, pointF)
         val edgeFA = kotlinEdge(pointF, pointA)
 
-        val points = List.of<kotlinPoint?>(pointA, pointB, pointC, pointD, pointE, pointF)
-        val edges = Arrays.asList<kotlinEdge?>(edgeAB, edgeBC, edgeCD, edgeDE, edgeEF, edgeFA)
-        return kotlinPolygon(points, edges)
+        val points = listOf<kotlinPoint?>(pointA, pointB, pointC, pointD, pointE, pointF)
+        val edges = listOf(edgeAB, edgeBC, edgeCD, edgeDE, edgeEF, edgeFA)
+        return kotlinPolygon(points as MutableList<kotlinPoint?>, edges as MutableList<kotlinEdge?>)
     }
 
     fun createPolygon20Vertices(): kotlinPolygon {
@@ -99,5 +98,48 @@ class KotlinDriver {
             edgePQ, edgeQR, edgeRS, edgeST, edgeTA
         )
         return kotlinPolygon(points as MutableList<kotlinPoint?>, edges as MutableList<kotlinEdge?>)
+    }
+
+    private fun calculateNumPointsToDelete(polygon: kotlinPolygon, decimalOfPointsPreserved: Double): Int {
+        val pointsLost = 1 - decimalOfPointsPreserved
+        val numPoints = polygon.points.size
+        val numPointsToDelete = numPoints * pointsLost
+        return numPointsToDelete.roundToInt()
+    }
+
+    private fun calculateDeletedPointsSpacing(polygon: kotlinPolygon, numPointsDeleted: Int): Int {
+        val numPoints = polygon.points.size
+        val numRemainingPoints = numPoints - numPointsDeleted
+
+        val numPointsToSkip = numRemainingPoints.toDouble() / numPointsDeleted
+        return floor(numPointsToSkip).toInt()
+    }
+
+    @Throws(InterruptedException::class)
+    private fun removeEdge(polygon: kotlinPolygon, i: Int) {
+        val millisecondsPaused = 1000
+        Thread.sleep(millisecondsPaused.toLong())
+        polygon.removeKotlinEdge(polygon.edges[i])
+        polygon.updateDrawing()
+    }
+
+    @Throws(InterruptedException::class)
+    private fun deleteEdges(polygon: kotlinPolygon, pointsPreserved: Double) {
+        val numPointsDeleted = calculateNumPointsToDelete(polygon, pointsPreserved)
+        val numPointsToSkip = calculateDeletedPointsSpacing(polygon, numPointsDeleted)
+
+        var numEdgesDeletedSoFar = 0
+        var currentEdge = 0
+        var numEdgesSkipped = 0
+        while (numEdgesDeletedSoFar != numPointsDeleted) {
+            if (numEdgesSkipped == numPointsToSkip) {
+                removeEdge(polygon, currentEdge)
+                numEdgesDeletedSoFar++
+                numEdgesSkipped = 0
+            } else {
+                numEdgesSkipped++
+                currentEdge++
+            }
+        }
     }
 }
