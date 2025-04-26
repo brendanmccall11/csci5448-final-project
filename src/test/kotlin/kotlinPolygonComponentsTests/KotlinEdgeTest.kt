@@ -1,11 +1,10 @@
-package KotlinPolygonComponentsTests
+package kotlinPolygonComponentsTests
 
 import kotlinPolygonComponents.kotlinPoint
 import kotlinPolygonComponents.kotlinEdge
 import kotlinPolygonComponents.kotlinPolygon
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import java.util.List
 
 class KotlinEdgeTest {
 
@@ -44,8 +43,9 @@ class KotlinEdgeTest {
         val polygon = kotlinPolygon(points as MutableList<kotlinPoint?>, edges as MutableList<kotlinEdge?>)
 
         val connectedEdges = polygon.getConnectedEdges(pointB)
-        val connectedPoints = kotlinEdge.getConnectedPoints(connectedEdges)
-        val expectedPoints = List.of<kotlinPoint?>(pointA, pointC)
+        val tempEdge = kotlinEdge(null, null)
+        val connectedPoints = tempEdge.getConnectedPoints(connectedEdges)
+        val expectedPoints = listOf<kotlinPoint?>(pointA, pointC)
         Assertions.assertEquals(expectedPoints, connectedPoints)
     }
 }

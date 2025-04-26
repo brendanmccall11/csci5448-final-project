@@ -16,9 +16,24 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test/java/PolygonComponentsTests', 'src/test/java']
+        }
+        kotlin {
+            srcDirs = ['src/test/kotlin/kotlinPolygonComponentsTests', 'src/test/kotlin']
+        }
+    }
+}
+
 test {
     useJUnitPlatform()
+    // Optional: Include specific test patterns if needed
+    include 'PolygonComponentsTests/**'
+    include 'kotlinPolygonComponentsTests/**'
 }
+
 kotlin {
     jvmToolchain(21)
 }
