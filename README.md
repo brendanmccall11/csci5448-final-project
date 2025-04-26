@@ -23,8 +23,8 @@ by gradle to load the project, do so. Otherwise, in the root directory
 of the project type the following:
 
 ```
-gradle clean
-gradle build
+./gradlew clean
+./gradlew
 ```
 Finally, you can press the run button next to the main function in the
 driver that you wish to run.
