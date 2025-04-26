@@ -5,19 +5,32 @@ import kotlin.collections.MutableList
 import kotlin.collections.listOf
 import kotlin.math.floor
 import kotlin.math.roundToInt
+import kotlin.system.measureTimeMillis
 
 class KotlinDriver {
 
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            KotlinDriver().run {
-                val kotlinPolygon = createPolygon20Vertices()
-                kotlinPolygon.draw()
+            val executionTimes = mutableListOf<Long>()
+            val numRuns = 10
 
-                val pointsPreserved = 0.8
-                deleteEdges(kotlinPolygon, pointsPreserved)
+            repeat(numRuns) { run ->
+                val executionTime = measureTimeMillis {
+                    KotlinDriver().run {
+                        val kotlinPolygon = createPolygon20Vertices()
+                        kotlinPolygon.draw()
+
+                        val pointsPreserved = 0.8
+                        deleteEdges(kotlinPolygon, pointsPreserved)
+                    }
+                }
+                executionTimes.add(executionTime)
+                println("Run ${run + 1}: $executionTime ms")
             }
+
+            val averageTime = executionTimes.average()
+            println("\nAverage execution time over $numRuns runs: ${"%.2f".format(averageTime)} ms")
         }
     }
 
@@ -98,6 +111,10 @@ class KotlinDriver {
             edgePQ, edgeQR, edgeRS, edgeST, edgeTA
         )
         return kotlinPolygon(points as MutableList<kotlinPoint?>, edges as MutableList<kotlinEdge?>)
+    }
+
+    private fun createMultiplePolygons() {
+
     }
 
     private fun calculateNumPointsToDelete(polygon: kotlinPolygon, decimalOfPointsPreserved: Double): Int {

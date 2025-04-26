@@ -1,17 +1,39 @@
 import PolygonComponents.Edge;
 import PolygonComponents.Point;
 import PolygonComponents.Polygon;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class JavaDriver {
 
     public static void main(String[] args) throws InterruptedException {
-        Polygon polygon = createPolygon20Vertices();
-        polygon.draw();
+        List<Long> executionTimes = new ArrayList<>();
+        int numRuns = 10;
 
-        double pointsPreserved = 0.8;
-        deleteEdges(polygon, pointsPreserved);
+        for (int i = 0; i < numRuns; i++) {
+            long startTime = System.currentTimeMillis();
+
+            Polygon polygon = createPolygon20Vertices();
+            polygon.draw();
+
+            double pointsPreserved = 0.8;
+            deleteEdges(polygon, pointsPreserved);
+
+            long endTime = System.currentTimeMillis();
+            long executionTime = endTime - startTime;
+            executionTimes.add(executionTime);
+
+            System.out.println("Run " + (i+1) + ": " + executionTime + " ms");
+        }
+
+        double averageTime = executionTimes.stream()
+                .mapToLong(Long::longValue)
+                .average()
+                .orElse(0.0);
+
+        System.out.printf("\nAverage execution time over %d runs: %.2f ms\n",
+                numRuns, averageTime);
     }
 
     public static Polygon createPolygon6Vertices() {
