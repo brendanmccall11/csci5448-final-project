@@ -113,10 +113,6 @@ class KotlinDriver {
         return kotlinPolygon(points as MutableList<kotlinPoint?>, edges as MutableList<kotlinEdge?>)
     }
 
-    private fun createMultiplePolygons() {
-
-    }
-
     private fun calculateNumPointsToDelete(polygon: kotlinPolygon, decimalOfPointsPreserved: Double): Int {
         val pointsLost = 1 - decimalOfPointsPreserved
         val numPoints = polygon.points.size
