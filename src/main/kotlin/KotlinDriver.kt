@@ -50,7 +50,7 @@ class KotlinDriver {
         val edgeFA = kotlinEdge(pointF, pointA)
 
         val points = listOf<kotlinPoint?>(pointA, pointB, pointC, pointD, pointE, pointF)
-        val edges = listOf(edgeAB, edgeBC, edgeCD, edgeDE, edgeEF, edgeFA)
+        val edges = listOf<kotlinEdge?>(edgeAB, edgeBC, edgeCD, edgeDE, edgeEF, edgeFA)
         return kotlinPolygon(points as MutableList<kotlinPoint?>, edges as MutableList<kotlinEdge?>)
     }
 
