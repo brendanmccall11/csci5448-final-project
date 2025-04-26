@@ -13,7 +13,7 @@ class KotlinDriver {
         @JvmStatic
         fun main(args: Array<String>) {
             val executionTimes = mutableListOf<Long>()
-            val numRuns = 10
+            val numRuns = 30
 
             repeat(numRuns) { run ->
                 val executionTime = measureTimeMillis {

@@ -9,7 +9,7 @@ public class JavaDriver {
 
     public static void main(String[] args) throws InterruptedException {
         List<Long> executionTimes = new ArrayList<>();
-        int numRuns = 10;
+        int numRuns = 30;
 
         for (int i = 0; i < numRuns; i++) {
             long startTime = System.currentTimeMillis();
